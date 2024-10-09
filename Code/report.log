@@ -170,3 +170,67 @@ ValueError: shape mismatch: objects cannot be broadcast to a single shape.  Mism
 2024-10-07 16:27:18,894 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
 2024-10-07 16:27:28,929 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.010851868122281177, best pos: [1.04541226e-04 8.35624244e-06 4.29767897e-02 1.28293030e-01
  1.36803926e+00 3.20245871e+01]
+2024-10-08 13:41:08,025 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-08 13:41:17,554 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.003216726530895819, best pos: [ 1.89321985e-04  1.71136362e-05  9.41427468e-02  1.40486018e-01
+  6.30709429e-01 -8.87645417e+01]
+2024-10-08 13:48:05,532 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-08 13:48:20,701 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.006140619627025541, best pos: [ 8.74304836e-05  3.46571831e-05  4.46320749e-02  4.22344849e-02
+  1.33042821e+00 -3.40277252e+01]
+2024-10-08 13:49:27,507 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-08 13:49:37,878 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.005076743408803607, best pos: [1.04541226e-04 8.35624244e-06 4.29767897e-02 1.28293030e-01
+ 1.36803926e+00 3.20245871e+01]
+2024-10-09 08:38:55,464 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 08:39:11,086 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0038486997313856653, best pos: [2.50219136e-04 4.76450481e-05 1.06688457e-01 1.56115759e-01
+ 1.14340678e+00 4.52588555e+00]
+2024-10-09 10:23:43,704 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:31:43,922 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:32:40,627 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:32:49,841 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0036828602336305273, best pos: [ 2.83967542e-04  2.44148071e-05  1.47676374e-02  1.60762701e-01
+  7.62652556e-01 -7.53187510e+01]
+2024-10-09 10:33:33,406 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:33:58,263 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:49:36,011 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:49:58,104 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:50:03,989 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:51:13,683 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:52:19,403 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:52:27,717 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:56:57,851 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:57:15,609 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 10:57:29,692 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 11:00:57,074 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (16,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 74, in generate_swarm
+    lb, ub = bounds
+    ^^^^^^
+ValueError: too many values to unpack (expected 2)
+2024-10-09 11:01:01,380 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (16,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 74, in generate_swarm
+    lb, ub = bounds
+    ^^^^^^
+ValueError: too many values to unpack (expected 2)
+2024-10-09 11:02:53,860 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (16,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 74, in generate_swarm
+    lb, ub = bounds
+    ^^^^^^
+ValueError: too many values to unpack (expected 2)
+2024-10-09 11:36:23,877 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 11:36:33,846 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.002619655895768937, best pos: [ 1.87130055e-04  4.95029169e-05  3.46521140e-02  1.24296069e-01
+  1.05875058e+00 -2.66497751e+01]
+2024-10-09 11:37:18,086 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-10-09 11:37:27,697 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.005076742023912942, best pos: [1.04541226e-04 8.35624244e-06 4.29767897e-02 1.28293030e-01
+ 1.36803926e+00 3.20245871e+01]
+2024-10-09 11:38:01,774 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (16,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 74, in generate_swarm
+    lb, ub = bounds
+    ^^^^^^
+ValueError: too many values to unpack (expected 2)
+2024-10-09 11:38:25,860 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (16,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 74, in generate_swarm
+    lb, ub = bounds
+    ^^^^^^
+ValueError: too many values to unpack (expected 2)
