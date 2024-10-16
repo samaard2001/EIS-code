@@ -1,0 +1,1 @@
+This is a re-do a couple of days after the first scan, just to be sure that the two replicas look approx the same.
