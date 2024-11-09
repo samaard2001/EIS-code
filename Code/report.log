@@ -591,3 +591,7 @@ ValueError: too many values to unpack (expected 2)
 2024-11-09 13:46:05,815 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0009749113700495231, best pos: [-9.49310803e-05  1.71927312e+00  2.54146745e+00  3.14160380e+00
   3.35337274e+00  2.01299556e-02  3.46410048e+00  3.90654394e+00
   3.21196774e+00  2.32647079e+00]
+2024-11-09 14:59:16,223 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-09 14:59:18,735 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.000479198753080396, best pos: [-9.76300597e-06  3.59866565e+00  4.62307283e+00  2.12253058e+00
+  6.28332554e+00  1.56235912e-02  4.28961346e+00  3.08470516e+00
+  3.57531635e+00  1.86470499e+00]
