@@ -816,3 +816,63 @@ ValueError: shape mismatch: objects cannot be broadcast to a single shape.  Mism
 2024-11-14 18:01:39,622 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
 2024-11-14 18:01:46,938 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00014621208829040572, best pos: [1.97653655e-03 2.23955754e-02 4.70156635e-01 1.27441246e-01
  9.91800324e-16 5.13556135e-01 3.40219156e+07]
+2024-11-17 16:23:39,519 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:23:41,107 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0009225770805841726, best pos: [-2.85884793e-06  4.99142878e+00  2.23878104e+00  3.94837371e+00
+  3.45745254e+00  2.16243607e-02  4.15006031e+00  4.53794780e+00
+  2.39106090e+00  2.54454630e+00]
+2024-11-17 16:23:42,716 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:23:47,894 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00014912045459467376, best pos: [1.92303703e-03 2.96822055e-02 8.16906673e-01 1.18083052e-01
+ 9.21795016e-16 5.20800945e-01 1.79641021e+07]
+2024-11-17 16:25:32,004 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:25:34,435 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00136621201389434, best pos: [-6.01902495e-05  1.27498905e+00  2.03014228e+00  7.28080739e-01
+  4.33121185e+00  1.89910892e-02  3.60018046e+00  4.20297443e+00
+  2.79107463e+00  3.55816062e+00]
+2024-11-17 16:26:25,273 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:26:31,925 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00015155344888745207, best pos: [1.92533865e-03 1.31871307e-02 6.02893356e-01 1.10219762e-01
+ 7.91011011e-16 5.16521864e-01 2.39755188e+07]
+2024-11-17 16:37:29,889 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:38:36,786 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:39:05,417 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (10,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 81, in generate_swarm
+    pos = center * np.random.uniform(
+                   ^^^^^^^^^^^^^^^^^^
+  File "numpy/random/mtrand.pyx", line 1170, in numpy.random.mtrand.RandomState.uniform
+  File "_common.pyx", line 600, in numpy.random._common.cont
+  File "_common.pyx", line 517, in numpy.random._common.cont_broadcast_2
+  File "__init__.cython-30.pxd", line 780, in numpy.PyArray_MultiIterNew3
+ValueError: shape mismatch: objects cannot be broadcast to a single shape.  Mismatch is between arg 0 with shape (200, 10) and arg 1 with shape (200, 7).
+2024-11-17 16:39:55,355 - pyswarms.single.global_best - INFO - Optimize for 100 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:39:56,935 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0008963405889576671, best pos: [2.96975829e-05 2.64698385e+00 1.99501228e+00 1.86411345e+00
+ 3.82693067e+00 5.89267732e-03 3.64537822e+00 2.81903916e+00
+ 8.63802890e-01 3.08994754e+00]
+2024-11-17 16:39:59,580 - pyswarms.backend.generators - ERROR - Bounds and/or init_pos should be of size (10,)
+Traceback (most recent call last):
+  File "/Users/synnemard/anaconda3/lib/python3.11/site-packages/pyswarms/backend/generators.py", line 81, in generate_swarm
+    pos = center * np.random.uniform(
+                   ^^^^^^^^^^^^^^^^^^
+  File "numpy/random/mtrand.pyx", line 1170, in numpy.random.mtrand.RandomState.uniform
+  File "_common.pyx", line 600, in numpy.random._common.cont
+  File "_common.pyx", line 517, in numpy.random._common.cont_broadcast_2
+  File "__init__.cython-30.pxd", line 780, in numpy.PyArray_MultiIterNew3
+ValueError: shape mismatch: objects cannot be broadcast to a single shape.  Mismatch is between arg 0 with shape (200, 10) and arg 1 with shape (200, 7).
+2024-11-17 16:43:55,898 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:44:02,802 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00014675532121843598, best pos: [1.97245681e-03 1.76948586e-02 2.65706084e-02 7.87224008e-01
+ 5.16945586e-01 1.35599994e-01 7.24465079e-01 9.80273266e-16
+ 5.21622108e-01 1.99983384e+07]
+2024-11-17 16:45:14,791 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:45:22,091 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0001462469852924757, best pos: [1.97518956e-03 1.46824675e-02 1.16806304e-02 3.06547921e-01
+ 6.32273933e-01 1.21357806e-01 2.50763862e-02 6.14237798e-16
+ 5.02093044e-01 5.08726235e+07]
+2024-11-17 16:55:54,200 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:56:01,483 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00015149000672300052, best pos: [1.99733352e-03 2.14117489e-02 6.63211632e-03 1.78710388e+00
+ 2.07992051e+00 1.33061012e-01 4.66993879e-01 9.86723394e-16
+ 5.41819779e-01 9.18136192e+06]
+2024-11-17 16:58:22,957 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:58:31,798 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.00015028251233120042, best pos: [1.97851212e-03 8.86648542e-03 1.02125875e-02 1.44880341e+00
+ 7.34081723e-01 1.32382542e-01 6.77901370e-01 8.69432595e-16
+ 5.48504390e-01 1.09204979e+07]
+2024-11-17 16:59:08,866 - pyswarms.single.global_best - INFO - Optimize for 200 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-17 16:59:16,132 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.0001519415513137888, best pos: [1.94575617e-03 1.44269216e-02 2.30389917e-02 2.54921492e-01
+ 2.18071704e+00 1.20763916e-01 9.74591301e-01 7.77567319e-16
+ 4.98131165e-01 5.82863671e+07]
