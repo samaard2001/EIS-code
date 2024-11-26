@@ -6,6 +6,7 @@ EIS_data/MJ1_02_EIS-SoC_01
 MJ1_01_01.csv
 EIS_data/MJ1_02
 EIS_data/.DS_Store
+__pycache__/
 
 
 
