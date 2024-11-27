@@ -18,8 +18,6 @@ def optimize_diff(i, parametre, calc_func):
         diff_imag = Z.imag - exp_imag
         sum_square_diff = np.sum(diff_real ** 2 + diff_imag ** 2)
         return sum_square_diff
-    
-    #print(diff_func(dict_to_list(a_number_parametre), exp_real, exp_imag, frequencies))
 
     # Convert initial dictionary to list for optimization
     initial_elems = dict_to_list(parametre)
