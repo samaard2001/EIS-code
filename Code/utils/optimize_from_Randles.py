@@ -8,7 +8,7 @@ from utils.ecm_randles import calc_randles_Z, a_randles
 # Optimizing the difference function for a given data set
 def optimize_randles(i, parametre, calc_func):
     # finding the optimization from the randles circuit
-    dic_randles_Z, final_diff_randles, frequencies, list_randles_Z = optimize_diff(i, a_randles, calc_randles_Z)
+    final_diff_randles, list_randles_Z = optimize_diff(i, a_randles, calc_randles_Z)
     frequencies = np.array(get_exp_data(i, "")[1])
 
     # Difference function for the optimization
@@ -36,4 +36,4 @@ def optimize_randles(i, parametre, calc_func):
     
     #print("Final sum of squared difference for dataset", i, ":", final_diff)
 
-    return opt_elems, final_diff, frequencies, opt.x 
+    return final_diff, opt.x 

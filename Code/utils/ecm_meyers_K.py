@@ -36,7 +36,7 @@ a_meyers_K = {
     "Q2": 0.9, 
     "alpha_q1": 0.75,
     "alpha_q2": 0.8,
-    "Ds": 4.1e-16,     # diffusjonskoeffisient [m^2.s^-1]
+    "Ds": 4.1e-15,     # diffusjonskoeffisient [m^2.s^-1]
     "alpha": 0.93, #ikke-ideell diffusjon
     "a": 428947,  # overflateareal porer/volum electrode [m^-1]
     }
@@ -46,7 +46,7 @@ def R_part(Ds):
     return R_part 
 
 def Y_s(omega, Ds, alpha):
-    omega_s = (omega*Rs_a**2)/Ds #**alpha
+    omega_s = (omega*Rs_a**2)/Ds**alpha
     Y_s = (np.sqrt(1j*omega_s) - np.tanh(np.sqrt(1j*omega_s)))/np.tanh(np.sqrt(1j*omega_s))
     return Y_s
 

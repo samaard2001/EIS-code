@@ -45,7 +45,7 @@ def R_part(Ds):
     return R_part 
 
 def Y_s(omega, Ds, alpha):
-    omega_s = (omega*Rs_a**2)/Ds #**alpha
+    omega_s = (omega*Rs_a**2)/Ds**alpha
     Y_s = (np.sqrt(1j*omega_s) - np.tanh(np.sqrt(1j*omega_s)))/np.tanh(np.sqrt(1j*omega_s))
     return Y_s
 

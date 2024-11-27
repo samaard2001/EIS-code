@@ -10,7 +10,7 @@ def optimizing_plot(i, name, a_params, calc_func, diff_func):
     frequencies = np.array(get_exp_data(i, "")[1])
     Z = calc_func(dict_to_list(a_params), frequencies)
 
-    dic_elems, final_diff, frequencies, list_elems = diff_func(i, a_params, calc_func)
+    final_diff, list_elems = diff_func(i, a_params, calc_func)
     Z_scipy = calc_func(list_elems, frequencies)
 
     fig, ax = plt.subplots(figsize=(6, 6)) 

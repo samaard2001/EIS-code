@@ -36,5 +36,5 @@ def optimize_diff(i, parametre, calc_func):
     
     #print("Final sum of squared difference for dataset", i, ":", final_diff)
 
-    return opt_elems, final_diff, frequencies, opt.x 
+    return final_diff, opt.x 
 
