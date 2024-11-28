@@ -953,3 +953,12 @@ ValueError: shape mismatch: objects cannot be broadcast to a single shape.  Mism
 2024-11-28 11:01:14,940 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
 2024-11-28 11:01:19,490 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.013443628786693855, best pos: [1.14385342 0.76493076 0.75685402 0.67768708 0.43000437 0.62657955
  1.00037844 0.29808744 0.50588699 1.05195403]
+2024-11-28 13:23:46,074 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-28 13:23:51,645 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.01344356994532225, best pos: [1.14385342 0.76493076 0.75685402 0.67768708 0.43000437 0.62657955
+ 1.00037844 0.29808744 0.50588699 1.05195403]
+2024-11-28 13:24:40,913 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-28 13:24:44,418 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.013443627082731582, best pos: [1.14385342 0.76493076 0.75685402 0.67768708 0.43000437 0.62657955
+ 1.00037844 0.29808744 0.50588699 1.05195403]
+2024-11-28 13:26:48,505 - pyswarms.single.global_best - INFO - Optimize for 2 iters with {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+2024-11-28 13:26:52,932 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 0.01344358553869642, best pos: [1.14385342 0.76493076 0.75685402 0.67768708 0.43000437 0.62657955
+ 1.00037844 0.29808744 0.50588699 1.05195403]
