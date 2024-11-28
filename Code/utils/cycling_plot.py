@@ -20,23 +20,38 @@ def extract_data(dict):
 
     return U_array, scaled_time_array, I_array #U_array[start:end], scaled_time_array[start:end], I_array[start:end]
 
+def find_index(list, value, tolerance): 
+    # Find the index where the time is approximately equal to the target value
+    indices = np.where(np.abs(list - value) < tolerance)[0]
+    if indices.size > 0:
+       return indices[0]
+    else:
+       return(print(f"No index found where time is approximately {value}."))
 
 def plot_cycling(MJs): 
     fig, ax1 = plt.subplots(figsize=(6, 6))
-    i = 1
+    Us = []
+    Is = []
     for idx in range(0, len(MJs)): 
         U, time, I = extract_data(MJs[idx])
-        # Only plotting the cycle I am interested in (here: C/5 cycle)
-        w = np.where(U == 3.0)
-        start = 1614
-        end = 5180
-        U, time, I = U[start:end], time[start:end], I[start:end]
+
+        start = find_index(time, 52000, 10)
+        U, time, I = U[start:], time[start:], I[start:]
+
+        Us.append(U)
+        Is.append(I)
+
         ax1.plot(time, U, label = f'M1_02_'+str(idx+1))
-        i += 1
+    
+    c = find_index(Us[0], 3.587, 1e-3)
+
+    # Calculate the change in resistance
+    R_change = [(Us[i+1][c] - Us[i][c]) / (Is[i][c]) for i in range(len(Us)-1)]      
 
     ax1.set_xlabel('t')
     ax1.set_ylabel('U', color='b')
     ax1.tick_params(axis='y', labelcolor='b')
     ax1.legend(loc='upper right')
-    plt.title('C/5 cycling')
-    return plt.show()
+    plt.title('GITT cycling')
+    plt.show()
+    return print(f'the increase in resistance from data set 1 to 2, and 2 to 3 etc., is '+str(R_change))
