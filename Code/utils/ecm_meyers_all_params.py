@@ -1,16 +1,13 @@
 import numpy as np
-from utils.parameters import params 
-params = params()
+from utils.parameters_2 import params_2
+params = params_2()
 from utils.convertion import list_to_dict
 from utils.convertion import dict_to_list
+from utils.geometry_params import R, T, n, F, e_a, c_n, area_electrode 
 from utils.potential_gradient import _dU_dc_anode
-
-# Finding the potential gradiient from the stoichiometry 
-params.set_initial_stoichiometries(0.45) # Setting SOC, this changes the initial concentrations
-c_n = params['Initial concentration in negative electrode [mol.m-3]'] 
 _dU_dc_a = _dU_dc_anode(c_n)
-area_electrode = params['Electrode height [m]']*params['Electrode width [m]'] #[m^2]
-F = 96485 #C/mol
+
+eta = e_a/params['Negative electrode Bruggeman coefficient (electrolyte)']
 
 # Meyers component parameters
 a_meyers_all = {
@@ -26,18 +23,19 @@ a_meyers_all = {
     "Q2": 1.2, 
     "alpha_q1": 0.75,
     "alpha_q2": 0.8,
-    "Ds": 7.5e-15,     # diffusjonskoeffisient [m^2.s^-1]
-    "alpha": 0.92, #ikke-ideell diffusjon
+    "Ds": 1.0e-16,     # diffusjonskoeffisient [m^2.s^-1]
+    "eta": 0.9, #ikke-ideell diffusjon
     "a": 428947,  # overflateareal porer/volum electrode [m^-1]
     "I": 5.534820787666664e-07 
     }
+
 
 def R_part(Ds, Rs): 
     R_part = _dU_dc_a*(Rs/(F*Ds))
     return R_part 
 
-def Y_s(omega, Ds, Rs, alpha):
-    omega_s = (omega*Rs**2)/Ds**alpha
+def Y_s(omega, Ds, Rs, eta):
+    omega_s = (omega*Rs**2)/(Ds*eta)
     Y_s = (np.sqrt(1j*omega_s) - np.tanh(np.sqrt(1j*omega_s)))/np.tanh(np.sqrt(1j*omega_s))
     return Y_s
 
@@ -60,7 +58,7 @@ def calc_meyers_all_Z(comp, frequencies):
     ang_freq = 2 * np.pi * frequencies
 
     Rp = R_part(param['Ds'], param['Rs'])
-    Ys = Y_s(ang_freq, param['Ds'], param['Rs'], param['alpha'])
+    Ys = Y_s(ang_freq, param['Ds'], param['Rs'], param['eta'])
     Y = Y_particle(ang_freq, param['R1'], param['R2'], param['Q1'], param['Q2'], param['alpha_q1'], param['alpha_q2'], Rp, Ys)
     v_calc = v(param['a'], Y, param['K'], param['sigma'], param['L'])
     Z_L = i_imp(ang_freq, param["I"])

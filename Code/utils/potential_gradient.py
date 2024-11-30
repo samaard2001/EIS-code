@@ -1,17 +1,7 @@
 import numpy as np
-from utils.parameters import params
-params = params()
-
-c_n_max = params["Maximum concentration in negative electrode [mol.m-3]"]
-c_n_s_max = c_n_max 
-c_p_max = params["Maximum concentration in positive electrode [mol.m-3]"]
-c_p_s_max = c_p_max
-
-params.set_initial_stoichiometries(0.45) # Setting SOC, this changes the initial concentrations
-c_n = params['Initial concentration in negative electrode [mol.m-3]'] 
-c_n_s = c_n # for the surface of the particle
-c_p = params['Initial concentration in positive electrode [mol.m-3]'] 
-c_p_s = c_p
+from utils.parameters_2 import params_2
+params = params_2()
+from utils.geometry_params import c_n_max, c_p_max
 
 def sech_2(z): 
     return 1/np.cosh(z)**2

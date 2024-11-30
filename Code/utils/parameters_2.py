@@ -27,7 +27,6 @@ def MJ1_ocp_tanh_NMC(sto):
 
 EXCHANGE_CURRENT_DENSITY_SCALE = 2.8 
 ELECTROLYTE_CONDUCTIVITY_SCALE = 1 
-INITIAL_LAM_SCALE = 2 
 
 def graphite_exchange_current_density(c_e, c_s_surf, c_s_max, T):
     """     
@@ -61,8 +60,7 @@ def graphite_exchange_current_density(c_e, c_s_surf, c_s_max, T):
     m_ref = 6.48e-7  # (A/m2)(m3/mol)**1.5 - includes ref concentrations     
     E_r = 35000     
     arrhenius = pb.exp(E_r / pb.constants.R * (1 / 298.15 - 1 / T))     
-    ex_cur_dens = m_ref * arrhenius * c_e**0.5 * c_s_surf**0.5 * (c_s_max - c_s_surf) * 0.5 * EXCHANGE_CURRENT_DENSITY_SCALE     
-    print(ex_cur_dens)     
+    ex_cur_dens = m_ref * arrhenius * c_e**0.5 * c_s_surf**0.5 * (c_s_max - c_s_surf) * 0.5 * EXCHANGE_CURRENT_DENSITY_SCALE         
     return ex_cur_dens 
 
 def nmc_exchange_current_density(c_e, c_s_surf, c_s_max, T):     
@@ -140,7 +138,7 @@ known_params = {
     'Maximum concentration in negative electrode [mol.m-3]': 34684.0,     
     'Negative particle radius [m]': 6.1e-06,     
     'Negative electrode porosity': 0.216,     
-    'Negative electrode active material volume fraction': 0.694*INITIAL_LAM_SCALE, # Tune this to account for LAM     
+    'Negative electrode active material volume fraction': 0.694,     
     # 'Negative electrode Bruggeman coefficient (electrolyte)': 1.5,     
     # 'Negative electrode charge transfer coefficient': 0.5,     
     'Negative electrode conductivity [S.m-1]': 100.0,     
@@ -149,7 +147,7 @@ known_params = {
     'Maximum concentration in positive electrode [mol.m-3]': 50060.0,     
     'Positive particle radius [m]': 3.8e-06,     
     'Positive electrode porosity': 0.171,     
-    'Positive electrode active material volume fraction': 0.745*INITIAL_LAM_SCALE,  # Tune this to account for LAM     
+    'Positive electrode active material volume fraction': 0.745,   
     # 'Positive electrode Bruggeman coefficient (electrolyte)': 1.85,     
     # 'Positive electrode charge transfer coefficient': 0.5,     
     'Positive electrode conductivity [S.m-1]': 0.17,     
@@ -181,11 +179,26 @@ known_params = {
     'Separator density [kg.m-3]': 1009.0,     
     'Separator specific heat capacity [J.kg-1.K-1]': 1978.2,     
     'Separator thermal conductivity [W.m-1.K-1]': 0.33,     
-    'Separator thickness [m]': 12e-06,     # end of table data     
+    'Separator thickness [m]': 12e-06,     # end of table data
+    'EC initial concentration in electrolyte [mol.m-3]': 1000,     
     } 
 
-experiental_params = {     
+# This is just experimenting with new values
+experimental_params = {     
     'Positive electrode diffusivity [m2.s-1]': 5e-13*0.025,     
     'Negative electrode diffusivity [m2.s-1]': 5e-14*0.3,     
     'Negative electrode Bruggeman coefficient (electrolyte)': 2,     
     'Positive electrode Bruggeman coefficient (electrolyte)': 2.1,  }
+
+def params_2(): 
+   # Use default parameters from the Chen2020 publication
+   params = pb.ParameterValues("Chen2020")
+
+   # Overwrite parameters with our own
+   for parameter, value in known_params.items():
+       try:
+           if params[parameter] != value: # Check if the parameter exists in 'params' and has a different value
+               params[parameter] = value # Update 'params' with the new value from 'known_params'
+       except KeyError as e: # This block handles the case where the 'parameter' is not in 'params'
+           print(f"Parameter {parameter} not part of default. Skipping.")
+   return params

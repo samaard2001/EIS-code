@@ -1,23 +1,10 @@
 import numpy as np
-from utils.parameters import params 
-params = params()
-from utils.convertion import list_to_dict
-from utils.convertion import dict_to_list
+from utils.parameters_2 import params_2 
+params = params_2()
+from utils.convertion import list_to_dict, dict_to_list
+from utils.geometry_params import R, T, n, F, e_a, c_n, area_electrode, c_e  
 from utils.potential_gradient import _dU_dc_anode
-
-# Finding the potential gradiient from the stoichiometry 
-params.set_initial_stoichiometries(0.45) # Setting SOC, this changes the initial concentrations
-c_n = params['Initial concentration in negative electrode [mol.m-3]'] 
 _dU_dc_a = _dU_dc_anode(c_n)
-
-# Parameters for calculation of constants parameters below 
-c_e = params['EC initial concentration in electrolyte [mol.m-3]']
-T = 298 #K
-F = 96485 #C/mol 
-R = 8.314 #J/mol*K
-n = 1 
-e_a = 1 - params['Negative electrode porosity']
-area_electrode = params['Electrode height [m]']*params['Electrode width [m]'] #[m^2]
 
 # Constant parameters
 Rs_a = params['Negative particle radius [m]']
@@ -36,7 +23,7 @@ a_meyers = {
     "alpha_q1": 0.75,
     "alpha_q2": 0.8,
     "Ds": 4.1e-15,     # diffusjonskoeffisient [m^2.s^-1]
-    "alpha": 0.93, #ikke-ideell diffusjon
+    "eta": 0.93, #ikke-ideell diffusjon
     "a": 428947,  # overflateareal porer/volum electrode [m^-1]
     }
 
@@ -44,8 +31,8 @@ def R_part(Ds):
     R_part = _dU_dc_a*(Rs_a/(F*Ds))
     return R_part 
 
-def Y_s(omega, Ds, alpha):
-    omega_s = (omega*Rs_a**2)/Ds**alpha
+def Y_s(omega, Ds, eta):
+    omega_s = (omega*Rs_a**2)/(Ds*eta)
     Y_s = (np.sqrt(1j*omega_s) - np.tanh(np.sqrt(1j*omega_s)))/np.tanh(np.sqrt(1j*omega_s))
     return Y_s
 
@@ -64,7 +51,7 @@ def calc_meyers_Z(comp, frequencies):
     ang_freq = 2 * np.pi * frequencies
 
     Rp = R_part(param['Ds'])
-    Ys = Y_s(ang_freq, param['Ds'], param['alpha'])
+    Ys = Y_s(ang_freq, param['Ds'], param['eta'])
     Y = Y_particle(ang_freq, param['R1'], param['R2'], param['Q1'], param['Q2'], param['alpha_q1'], param['alpha_q2'], Rp, Ys)
     v_calc = v(param['a'], Y)
 

@@ -1,5 +1,4 @@
-from utils.convertion import dict_to_list
-from utils.convertion import list_to_dict
+from utils.convertion import dict_to_list, list_to_dict
 import numpy as np
 
 # Randles components parameters 
@@ -18,8 +17,6 @@ a_randles = {
     "R_ct2": 0.005384825939881047,  # Charge transfer resistance (Ohms)
     "Q2" : 2.339974970415867, 
     "alpha2": 0.8629910852751331, 
-    #"A2": 0.0011934570596558787,     # Warburg coefficient
-    #"a_w2": 0.5860161540205311, 
     }
 
 # Define non-ideal Warburg impedance
@@ -43,23 +40,11 @@ def calc_randles_Z(comp, frequencies):
     Z_W1 = wni_imp(ang_freq, elem_up["A1"], elem_up["a_w1"])
     Z_cdl1 = cpe_imp(ang_freq, elem_up["Q1"], elem_up["alpha1"])
     Z_L = i_imp(ang_freq, elem_up["L"])
-
-    #Z_W2 = wni_imp(ang_freq, c_elem_up["A2"], c_elem_up["a_w2"])
     Z_cdl2 = cpe_imp(ang_freq, elem_up["Q2"], elem_up["alpha2"])
-        
-    # 1
-    #Z1 =  1/(1/(c_elem_up["R_ct1"] + Z_W1) + 1/Z_cdl1)
-    #Z2 =  0
-    #Z = Z_L + c_elem_up["R_el"] + Z1 + Z2
 
     # 2 
     Z1 =  1/(1/(elem_up["R_ct1"] + Z_W1) + 1/Z_cdl1)
     Z2 =  1/(1/(elem_up["R_ct2"]) + 1/Z_cdl2)
     Z = Z_L + elem_up["R_el"] + Z1 + Z2
-
-    # 3 
-    #Z1 =  1/(1/(c_elem_up["R_ct1"] + Z_W1) + 1/Z_cdl1)
-    #Z2 =  1/(1/(c_elem_up["R_ct2"] + Z_W2) + 1/Z_cdl2)
-    #Z = Z_L + c_elem_up["R_el"] + Z1 + Z2
 
     return Z

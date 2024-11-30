@@ -33,8 +33,6 @@ def optimize_diff(i, parametre, calc_func):
     opt = minimize(diff_func, initial_elems, args=(exp_real, exp_imag, frequencies), method='TNC', options=options)
     opt_elems = list_to_dict(parametre, opt.x)
     final_diff = diff_func(opt.x, exp_real, exp_imag, frequencies)
-    
-    #print("Final sum of squared difference for dataset", i, ":", final_diff)
 
     return final_diff, opt.x 
 
