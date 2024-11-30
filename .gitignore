@@ -1,17 +1,11 @@
-EIS_data/MJ1_01_EIS-SoC_01-05
 EIS_data/
-EIS_data/MJ1_02
-EIS_data/MJ1_02_EIS-SoC_01
 .DS_Store/
 MJ1_01_01.csv
-EIS_data/MJ1_02
-EIS_data/.DS_Store
 __pycache__/
-EIS_final_code/
-EIS_code/
-EIS_test/
-test/
-pb_MJ1_synne/
+
+*.ipynb
+!EIS_ECM.ipynb
+
 
 
 
