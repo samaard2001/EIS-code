@@ -4,11 +4,18 @@ params = params_2()
 F = 96485 #C/mol 
 R = 8.314 #J/mol*K
 n = 1 
+z = 1
 T = 298 # K
 
-volume_anode = params['Electrode height [m]']*params['Electrode width [m]']*params['Negative electrode thickness [m]'] # [m^3]
-volume_cathode = params['Electrode height [m]']*params['Electrode width [m]']*params['Positive electrode thickness [m]'] # [m^3]
-area_electrode = params['Electrode height [m]']*params['Electrode width [m]'] #[m^2]
+e_height = params['Electrode height [m]'] 
+e_width = params['Electrode width [m]'] 
+s_thick = params['Separator thickness [m]'] 
+anode_thick = params['Negative electrode thickness [m]'] 
+cathode_thick = params['Positive electrode thickness [m]'] 
+
+volume_anode = e_height*e_width*anode_thick # [m^3]
+volume_cathode = e_height*e_width*cathode_thick # [m^3]
+area_electrode = e_height*e_width #[m^2]
 
 r_a = params['Negative particle radius [m]']
 r_c = params['Positive particle radius [m]']

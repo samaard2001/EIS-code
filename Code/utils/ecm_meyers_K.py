@@ -28,6 +28,7 @@ a_meyers_K = {
     "a": 428947,  # overflateareal porer/volum electrode [m^-1]
     }
 
+
 def R_part(Ds): 
     R_part = _dU_dc_a*(Rs_a/(F*Ds))
     return R_part 

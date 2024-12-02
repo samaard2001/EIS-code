@@ -4,7 +4,7 @@ import datetime
 import numpy as np
 
 
-def plot_impedance(data, labels: list[str] = None, title=None, bode=True, nyquist=True, degrees=False):
+def plot_impedance(data, names, labels: list[str] = None, title=None, bode=True, nyquist=True, degrees=False):
     # Type hinting throwing error: data: list[tuple[np.array[np.float64], np.array[np.complex128]]]
     """
     Plots impedance data from input data on the form:
@@ -43,7 +43,8 @@ def plot_impedance(data, labels: list[str] = None, title=None, bode=True, nyquis
     if labels:
         assert len(labels) == len(data), "Length of labels list must match length of data list"
     else:
-        labels = [f"Pattern {i}" for i in range(len(data))]
+        labels = [names[i] for i in range(len(data))]
+        #labels = [f"Pattern {i}" for i in range(len(data))]
     
     for pattern, label in zip(data, labels):
         ax_magni.scatter(pattern[0], abs(pattern[1]), label=label)

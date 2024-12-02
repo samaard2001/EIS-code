@@ -12,6 +12,8 @@ def optimizing_plot(i, name, a_params, calc_func, diff_func):
 
     final_diff, list_elems = diff_func(i, a_params, calc_func)
     Z_scipy = calc_func(list_elems, frequencies)
+    print(Z_scipy)
+    #print(list_elems)
 
     fig, ax = plt.subplots(figsize=(6, 6)) 
     ax.scatter(np.array(get_exp_data(i, "")[0][0]), -np.array(get_exp_data(i, "")[0][1]), color = 'red', label=f"Experimental "+str(np.round(get_vdc(i, ""),3))+" V") 
