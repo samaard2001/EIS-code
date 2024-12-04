@@ -6,6 +6,13 @@ import pandas as pd
 # at 25 deg C
 
 def get_exp_data(i, d): 
+
+    '''
+    Extracts the experimental data in the form 
+    [z_list, freq, len(freq)] 
+    
+    '''
+
     z_list = []
     file = "/Users/synnemard/Desktop/lithium_ion/EIS_data/MJ1_02_EIS-SoC/MJ1_02_EIS-SoC_0"+str(i)+"/"+d+"EISGALV3V587.DTA"
     ca = Impedance(file)
@@ -23,7 +30,6 @@ def get_exp_data(i, d):
     imag = df_imag[df_imag <= 0]
     freq = df_freq[df_imag <= 0]
     
-    #name = sum(df_name)/len(df_name)
     # Adding the impendances to the list 
     z_list.append(real)
     z_list.append(imag)

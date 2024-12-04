@@ -4,9 +4,15 @@ import datetime
 import numpy as np
 
 
+
 def plot_impedance(data, names, labels: list[str] = None, title=None, bode=True, nyquist=True, degrees=False):
     # Type hinting throwing error: data: list[tuple[np.array[np.float64], np.array[np.complex128]]]
     """
+    Reference 
+    ---
+    [1] Amund Raniseth. NTNU, Norway. 2024
+    ---
+    
     Plots impedance data from input data on the form:
         list(
             tuple(

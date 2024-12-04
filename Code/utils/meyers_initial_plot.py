@@ -15,15 +15,14 @@ e_s = params['Negative electrode porosity']
 
 # Meyers component parameters
 a_meyers_initial = {
-    "Rel": 0.0019,
-    "R1": R1_a*100, 
+    "Rel": 0.0025,
+    "R1": R1_a, 
     "C1": params['Negative electrode double-layer capacity [F.m-2]'],
     "Rs": params['Negative particle radius [m]'], 
-    #"Ds": params['Negative electrode diffusivity [m2.s-1]'],
-    "Ds": params['Electrolyte diffusivity [m2.s-1]'](c_e,T),     
+    "Ds": params['Negative electrode diffusivity [m2.s-1]'],     
     "a": a(volume_anode, e_a),  
     "L": params['Negative electrode thickness [m]'],  
-    "K" : (params['Electrolyte conductivity [S.m-1]'](c_e, T)*e_s)/params['Negative electrode Bruggeman coefficient (electrolyte)'],  # ledningsevne elektrolytt [S.m^-1]
+    "K" : (params['Electrolyte conductivity [S.m-1]'](c_e, T)*e_s**params['Negative electrode Bruggeman coefficient (electrolyte)']),  # ledningsevne elektrolytt [S.m^-1]
     "sigma": params['Negative electrode conductivity [S.m-1]'], 
     "ebsilon": e_a,     
     "-dU_dcs": _dU_dc_a, 
