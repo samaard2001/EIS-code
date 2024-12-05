@@ -1,5 +1,5 @@
-from utils.parameters_2 import params_2 
-params = params_2()
+from utils.known_parameters import params_func
+params = params_func()
 
 F = 96485 #C/mol 
 R = 8.314 #J/mol*K

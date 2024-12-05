@@ -10,8 +10,8 @@ def pso(i, parametre, calc_func):
    exp_imag = np.array(get_exp_data(i, "")[0][1])
    frequencies = np.array(get_exp_data(i, "")[1])
 
-   #lower_bounds = [0, 0, 0, 0, 0, 0, 0, 1e-20, 0, 1e4, ] 
-   #upper_bounds = [0.002, 0.03, 0.03, 3, 3, 1, 1, 1e-15, 1, 1e8] 
+   #lower_bounds = [ ] 
+   #upper_bounds = [] 
    #bounds = (lower_bounds, upper_bounds)
 
    initial_elems = dict_to_list(parametre)

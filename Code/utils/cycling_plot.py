@@ -54,4 +54,4 @@ def plot_cycling(MJs):
     ax1.legend(loc='upper right')
     plt.title('GITT cycling')
     plt.show()
-    return print(f'the increase in resistance from data set 1 to 2, and 2 to 3 etc., is '+str(R_change))
+    return print(f'The increase in resistance from data set 1 to 2, and 2 to 3 etc., is '+str(R_change))

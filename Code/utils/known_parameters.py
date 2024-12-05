@@ -190,7 +190,7 @@ experimental_params = {
     'Negative electrode Bruggeman coefficient (electrolyte)': 2,     
     'Positive electrode Bruggeman coefficient (electrolyte)': 2.1,  }
 
-def params_2(): 
+def params_func(): 
    # Use default parameters from the Chen2020 publication
    params = pb.ParameterValues("Chen2020")
 

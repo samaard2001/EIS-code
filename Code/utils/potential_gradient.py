@@ -1,6 +1,6 @@
 import numpy as np
-from utils.parameters_2 import params_2
-params = params_2()
+from utils.known_parameters import params_func
+params = params_func
 from utils.geometry_params import c_n_max, c_p_max
 
 def sech_2(z): 

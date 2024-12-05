@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt 
-from utils.parameters_2 import params_2
-params = params_2()
+from utils.known_parameters import params_func
+params = params_func()
 from utils.load_data import get_exp_data
 from utils.check_SOC import get_vdc
 from utils.convertion import list_to_dict, dict_to_list

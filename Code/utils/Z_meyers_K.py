@@ -1,6 +1,6 @@
 import numpy as np
-from utils.parameters_2 import params_2 
-params = params_2()
+from utils.known_parameters import params_func
+params = params_func()
 from utils.convertion import list_to_dict
 from utils.convertion import dict_to_list
 from utils.geometry_params import R, T, n, F, e_a, c_n, area_electrode, c_e  
