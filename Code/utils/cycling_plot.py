@@ -2,6 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 def extract_data(dict): 
+
+    '''
+    Extracts data and collect it in one array for voltage, one for current and one for scaled time. 
+
+    '''
+
     U = []
     I = []
     time = []
@@ -21,7 +27,9 @@ def extract_data(dict):
     return U_array, scaled_time_array, I_array 
 
 def find_index(list, value, tolerance): 
-    # Find the index where the time is approximately equal to the target value
+    '''
+    Find the index where the time is approximately equal to the target value
+    '''
     indices = np.where(np.abs(list - value) < tolerance)[0]
     if indices.size > 0:
        return indices[0]
@@ -29,6 +37,11 @@ def find_index(list, value, tolerance):
        return(print(f"No index found where time is approximately {value}."))
 
 def plot_cycling(MJs): 
+
+    '''
+    1. Plots the change cycling daa for a given interval [start:end] 
+    2. Gives the change in resistance between each dataset by Ohms law. 
+    '''
     fig, ax1 = plt.subplots(figsize=(6, 6))
     Us = []
     Is = []

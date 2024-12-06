@@ -34,8 +34,8 @@ def R_part(Ds, Rs):
     R_part = _dU_dc_a*(Rs/(F*Ds))
     return R_part 
 
-def Y_s(omega, Ds, Rs, eta):
-    omega_s = (omega*Rs**2)/(Ds*eta)
+def Y_s(omega, Ds, Rs):
+    omega_s = (omega*Rs**2)/(Ds)
     Y_s = (np.sqrt(1j*omega_s) - np.tanh(np.sqrt(1j*omega_s)))/np.tanh(np.sqrt(1j*omega_s))
     return Y_s
 
@@ -58,7 +58,7 @@ def calc_meyers_all_Z(comp, frequencies):
     ang_freq = 2 * np.pi * frequencies
 
     Rp = R_part(param['Ds'], param['Rs'])
-    Ys = Y_s(ang_freq, param['Ds'], param['Rs'], param['eta'])
+    Ys = Y_s(ang_freq, param['Ds'], param['Rs'])
     Y = Y_particle(ang_freq, param['R1'], param['R2'], param['Q1'], param['Q2'], param['alpha_q1'], param['alpha_q2'], Rp, Ys)
     v_calc = v(param['a'], Y, param['K'], param['sigma'], param['L'])
     Z_L = i_imp(ang_freq, param["I"])
