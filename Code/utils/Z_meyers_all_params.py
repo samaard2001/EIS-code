@@ -24,7 +24,6 @@ a_meyers_all = {
     "alpha_q1": 0.75,
     "alpha_q2": 0.8,
     "Ds": 1.0e-16,     # diffusjonskoeffisient [m^2.s^-1]
-    "eta": 0.9, #ikke-ideell diffusjon
     "a": 428947,  # overflateareal porer/volum electrode [m^-1]
     "I": 5.534820787666664e-07 
     }

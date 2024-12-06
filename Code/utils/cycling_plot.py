@@ -39,7 +39,7 @@ def find_index(list, value, tolerance):
 def plot_cycling(MJs): 
 
     '''
-    1. Plots the change cycling daa for a given interval [start:end] 
+    1. Plots the change cycling data for a given interval [start:end] 
     2. Gives the change in resistance between each dataset by Ohms law. 
     '''
     fig, ax1 = plt.subplots(figsize=(6, 6))
@@ -58,7 +58,7 @@ def plot_cycling(MJs):
     
     c = find_index(Us[0], 3.587, 1e-3)
 
-    # Calculate the change in resistance
+    # Calculate the change in resistance by Ohms law 
     R_change = [(Us[i+1][c] - Us[i][c]) / (Is[i][c]) for i in range(len(Us)-1)]      
 
     ax1.set_xlabel('t')
