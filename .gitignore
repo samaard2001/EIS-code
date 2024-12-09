@@ -4,7 +4,12 @@ MJ1_01_01.csv
 __pycache__/
 
 *.ipynb
-!EIS_ECM.ipynb
+!EIS_main_code.ipynb
+
+
+
+
+
 
 
 
