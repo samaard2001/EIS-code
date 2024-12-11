@@ -26,6 +26,8 @@ def extract_data(dict):
 
     return U_array, scaled_time_array, I_array 
 
+
+
 def find_index(list, value, tolerance): 
     '''
     Find the index where the time is approximately equal to the target value
