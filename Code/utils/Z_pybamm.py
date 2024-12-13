@@ -4,6 +4,11 @@ import numpy as np
 from utils.load_data import get_exp_data
 
 def calc_pybamm_Z(i, parametre, Rel): 
+    '''
+    Function to calculate the impedance Z from the PyBaMM parameters. 
+    
+    '''
+
     freq = np.array(get_exp_data(i, "")[1])
 
     model = pb.lithium_ion.DFN(options={"surface form": "differential"})

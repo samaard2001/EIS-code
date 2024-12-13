@@ -8,6 +8,10 @@ from utils.check_SOC import get_vdc
 # Changing state of charge SOC
 
 def set_SOC(parametre, z): 
+
+    ''''
+    Setting state of charge SoC.
+    '''
     x0, x100, y100, y0 = pybamm.lithium_ion.get_min_max_stoichiometries(parametre)
     x = x0 + z * (x100 - x0)
     y = y0 - z * (y0 - y100)
@@ -22,7 +26,14 @@ def set_SOC(parametre, z):
 
 def nyquist_plot(data, Rel, ax=None, marker="o", linestyle="None", **kwargs):
     """
-    from source: https://github.com/pybamm-team/pybamm-eis/blob/922b68e8187149b73c190ec57cc727e448c3acd9/pybammeis/plotting.py#L5
+    Reference
+    ---
+    [1] Sulzer, V., Marquis, S. G., Timms, R., Robinson, M., & Chapman, S. J. (2021). 
+    “Python Battery Mathematical Modelling (PyBaMM)”. Journal of Open Research Software,9 (1), 14.
+    Url: https://github.com/pybamm-team/pybamm-eis/blob/922b68e8187149b73c190ec57cc727e448c3acd9/pybammeis/plotting.py#L5
+    ---
+
+    Adding an ohmic resistance called Rel to align the experimental and simulated plots. 
     """
 
     if isinstance(data, list):
@@ -48,6 +59,9 @@ def nyquist_plot(data, Rel, ax=None, marker="o", linestyle="None", **kwargs):
     return ax
 
 def pybamm_plotting(i, parametre, Rel, xlim, ylim): 
+    '''
+    Plotting PyBaMM simulation and comparing with experimental in Nyquist plot. 
+    '''
     frequencies = np.array(get_exp_data(i, "")[1])
     model = pybamm.lithium_ion.DFN(options={"surface form": "differential"})
     eis_sim_func = pybammeis.EISSimulation(model, parameter_values=parametre)

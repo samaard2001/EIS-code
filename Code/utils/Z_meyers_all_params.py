@@ -52,6 +52,10 @@ def i_imp(omega, I):
 
 # Function to calculate Z 
 def calc_meyers_all_Z(comp, frequencies):
+    '''
+    Function to calculate the impedance Z from the Meyers component parameters. 
+    
+    '''
     # Update param dictionary from the flat parameter list (comp), where comp is updated values
     param = list_to_dict(a_meyers_all, comp) 
     ang_freq = 2 * np.pi * frequencies

@@ -6,7 +6,15 @@ import matplotlib.pyplot as plt
 def discharge_plotting_csv(parametre, path): 
 
     '''
-    [1] Amund Midtgard Raniseth, NTNU Trondheim. 2024. 
+    Reference 
+    ---
+    [1] Amund Raniseth. NTNU, Norway. 2024
+    ---
+
+    Function
+    ---
+    Plots the experimental discharge from a csv file, and also the PyBaMM simulated discharge. 
+    ---
 
     '''
     model = pb.lithium_ion.DFN(options={"surface form": "differential"})
@@ -43,8 +51,15 @@ def discharge_plotting_csv(parametre, path):
 def discharge_plotting_txt(parametre, path): 
 
     '''
-    [1] Amund Midtgard Raniseth, NTNU Trondheim. 2024. 
-
+    Reference 
+    ---
+    [1] Amund Raniseth. NTNU, Norway. 2024
+    ---
+    
+    Function
+    ---
+    Plots the experimental discharge from a csv file, and also the PyBaMM simulated discharge. 
+    ---
     '''
     model = pb.lithium_ion.DFN(options={"surface form": "differential"})
 
@@ -67,14 +82,12 @@ def discharge_plotting_txt(parametre, path):
     # Load the .txt file while skipping metadata rows
     exp_bench = pd.read_csv(
         path,
-        delimiter="\t",          # Tab-separated values
-        skiprows=7,              # Skip the first 7 rows of metadata
+        delimiter="\t",          
+        skiprows=7,              # Skips the first 7 rows
         names=["Rec", "Cycle P", "Cycle C", "Step", "Test Time", "Step Time", 
                "Capacity", "Energy", "Current", "Voltage", "MD", "ES", "DPT", "Time"
-               ],                        # Explicitly name the columns
-        usecols=["Test Time", "Current", "Voltage"],  # Extract only necessary columns
-        engine="python"          # Use Python engine for complex parsing
-        )
+               ],                        
+        usecols=["Test Time", "Current", "Voltage"])
     
     
     exp_bench["Test Time"] = exp_bench["Test Time"].astype(str)

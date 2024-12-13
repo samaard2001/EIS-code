@@ -16,21 +16,16 @@ K_a = (params['Electrolyte conductivity [S.m-1]'](c_e, T)*e_s)/params['Negative 
 
 # Meyers component parameters
 a_meyers = {
-    "Rel": 0.0019, # motstand elektrolytt, [ohm.m^2]
-    "R1": 0.011,  # motstand, [ohm.m^2]
+    "Rel": 0.0019, 
+    "R1": 0.011,  
     "R2": 0.008, 
-    "Q1": 0.8,  # kapasitans
+    "Q1": 0.8,  
     "Q2": 0.8, 
     "alpha_q1": 0.70,
     "alpha_q2": 0.8,
-    "Ds": 4.1e-15,     # diffusjonskoeffisient [m^2.s^-1]
-    "a": 428947,  # overflateareal porer/volum electrode [m^-1]
-    #"I": 4e-8 # inductance
+    "Ds": 4.1e-15,     
+    "a": 428947,  
     }
-
-# Define Inductance impedance
-def i_imp(omega, I): 
-    return 1j*omega*I 
 
 def R_part(Ds): 
     R_part = _dU_dc_a*(Rs_a/(F*Ds))
@@ -49,8 +44,12 @@ def v(a, Y):
     v = L_a/ (((K_a*sigma_a)/(K_a + sigma_a))**0.5*((a*Y))**(-0.5))
     return v
 
-# Function to calculate Z 
+
 def calc_meyers_Z(comp, frequencies):
+    '''
+    Function to calculate the impedance Z from the Meyers component parameters. 
+    
+    '''
     # Update param dictionary from the flat parameter list (comp), where comp is updated values
     param = list_to_dict(a_meyers, comp) 
     ang_freq = 2 * np.pi * frequencies
@@ -59,7 +58,6 @@ def calc_meyers_Z(comp, frequencies):
     Ys = Y_s(ang_freq, param['Ds'])
     Y = Y_particle(ang_freq, param['R1'], param['R2'], param['Q1'], param['Q2'], param['alpha_q1'], param['alpha_q2'], Rp, Ys)
     v_calc = v(param['a'], Y)
-    #Z_L = i_imp(ang_freq, param["I"])
 
     # The total impedance: 
     Z = (param['Rel'] + (L_a/(K_a+sigma_a))*(1 + (2 + (sigma_a/K_a + K_a/sigma_a)*np.cosh(v_calc))/(v_calc*np.sinh(v_calc))))/area_electrode

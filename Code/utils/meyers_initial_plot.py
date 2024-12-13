@@ -46,8 +46,11 @@ def v(parametre, Y):
     v = parametre['L']/ (((parametre['K']*parametre['sigma'])/(parametre['K'] + parametre['sigma']))**0.5*((parametre['a']*Y))**(-0.5))
     return v
 
-# Function to calculate Z 
+ 
 def calc_meyers_initial_Z(comp, frequencies):
+    '''
+    Function to calculate the impedance Z from the Meyers initial parameters. 
+    '''
     param = list_to_dict(a_meyers_initial, comp) 
     ang_freq = 2 * np.pi * frequencies
 
@@ -61,8 +64,11 @@ def calc_meyers_initial_Z(comp, frequencies):
 
     return Z
 
-# Function for Nyquist plot
 def plotting_meyers_initial(i): 
+    '''
+    Function for plotting Nyquist plot of the Meyers model with initial (known) parameters. 
+    '''
+
     frequencies = np.array(get_exp_data(i, "")[1])
     Z = calc_meyers_initial_Z(dict_to_list(a_meyers_initial), frequencies)
 

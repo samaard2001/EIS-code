@@ -15,17 +15,16 @@ epsilon_a = e_a # volume fraction anode
 
 # Meyers component parameters
 a_meyers_K = {
-    "Rel": 0.00192, # to move the plot
-    "K": 0.05, # conductivity, [S.m-1]
-    "R1": 0.005,  # motstand, [ohm.m^2]
+    "Rel": 0.00192, 
+    "K": 0.05, 
+    "R1": 0.005,  
     "R2": 0.005, 
-    "Q1": 0.7,  # kapasitans
+    "Q1": 0.7,  
     "Q2": 0.9, 
     "alpha_q1": 0.75,
     "alpha_q2": 0.8,
-    "Ds": 4.1e-15,     # diffusjonskoeffisient [m^2.s^-1]
-    "eta": 0.93, #ikke-ideell diffusjon
-    "a": 428947,  # overflateareal porer/volum electrode [m^-1]
+    "Ds": 4.1e-15,     
+    "a": 428947,  
     }
 
 
@@ -33,8 +32,8 @@ def R_part(Ds):
     R_part = _dU_dc_a*(Rs_a/(F*Ds))
     return R_part 
 
-def Y_s(omega, Ds, eta):
-    omega_s = (omega*Rs_a**2)/(Ds*eta)
+def Y_s(omega, Ds):
+    omega_s = (omega*Rs_a**2)/(Ds)
     Y_s = (np.sqrt(1j*omega_s) - np.tanh(np.sqrt(1j*omega_s)))/np.tanh(np.sqrt(1j*omega_s))
     return Y_s
 
@@ -46,14 +45,18 @@ def v(a, Y, K):
     v = L_a/ (((K*sigma_a)/(K + sigma_a))**0.5*((a*Y))**(-0.5))
     return v
 
-# Function to calculate Z 
+
 def calc_meyers_K_Z(comp, frequencies):
+    '''
+    Function to calculate the impedance Z from the Meyers component parameters. 
+    
+    '''
     # Update param dictionary from the flat parameter list (comp), where comp is updated values
     param = list_to_dict(a_meyers_K, comp) 
     ang_freq = 2 * np.pi * frequencies
 
     Rp = R_part(param['Ds'])
-    Ys = Y_s(ang_freq, param['Ds'], param['eta'])
+    Ys = Y_s(ang_freq, param['Ds'])
     Y = Y_particle(ang_freq, param['R1'], param['R2'], param['Q1'], param['Q2'], param['alpha_q1'], param['alpha_q2'], Rp, Ys)
     v_calc = v(param['a'], Y, param['K'])
 

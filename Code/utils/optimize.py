@@ -4,8 +4,13 @@ from utils.convertion import dict_to_list, list_to_dict
 from scipy.optimize import minimize
 
 
-# Optimizing the difference function for a given data set
+# Optimizing the difference function for a given data set i 
 def optimize_diff(i, parametre, calc_func):
+    '''
+    Optimizing the difference function by minimizing the sum of square error difference for a given data set i. 
+    The algorithm used is scipy.minimize.
+    
+    '''
     # Load the experimental data 
     exp_real = np.array(get_exp_data(i, "")[0][0])
     exp_imag = np.array(get_exp_data(i, "")[0][1])
@@ -24,9 +29,8 @@ def optimize_diff(i, parametre, calc_func):
 
     # Optimization options
     options = {
-        'maxiter': 10000,    # Maximum number of iterations
-        'ftol': 1e-4,       # Function value tolerance
-        #'disp': True
+        'maxiter': 10000,    
+        'ftol': 1e-4,      
     }
 
     # Minimize the difference function (optimize parameters)

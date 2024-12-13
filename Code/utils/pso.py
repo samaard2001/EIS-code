@@ -5,6 +5,11 @@ from utils.load_data import get_exp_data
 from utils.convertion import dict_to_list, list_to_dict
 
 def pso(i, parametre, calc_func): 
+   
+   '''
+   Optimizing the difference function by minimizing the sum of square error difference for a given data set i. 
+   The algorithm used is Particle Swarm Optimization.
+   '''
 
    exp_real = np.array(get_exp_data(i, "")[0][0])
    exp_imag = np.array(get_exp_data(i, "")[0][1])
@@ -37,6 +42,3 @@ def pso(i, parametre, calc_func):
 
    best_cost, best_params = optimizer.optimize(wrapped_diff_function, iters=200)
    return best_cost, best_params
-
-#sol = basinhopping(diff_func, x0=initial_elems, niter=200, T=1, stepsize=0.2, minimizer_kwargs={'method':'slsqp', 'args':(exp_real, exp_imag, frequencies), 'bounds':bounds, 'tol':10**-6}, take_step=None, accept_test=None, callback=None, interval=50, disp=True, niter_success=None, seed=None)
-#sol_elems = list_to_dict(a_fitting, sol.x)

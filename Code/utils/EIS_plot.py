@@ -21,8 +21,7 @@ def plot_impedance(data, names, labels: list[str] = None, title=None, bode=True,
         )
     Where the float64 values are the frequencies, and complex128 the corresponding impedance.
     """
-    # if bode or nyquist:
-    #     print("Oops, bode and nyquist ditch not implemented")
+
  
     fig = plt.figure(layout="constrained", figsize=(12, 6))
     gs = GridSpec(2, 2, figure=fig)

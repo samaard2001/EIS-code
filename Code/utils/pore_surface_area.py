@@ -4,6 +4,9 @@ from utils.geometry_params import e_a, volume_anode, r_a
 N = e_a*volume_anode/((4*np.pi/3)*r_a**3)
 
 def a(V_electrode, e): 
+    ''''
+    Calculating the effective pore surface area. 
+    '''
     V_particle = (4*np.pi/3)*r_a**3
     V_active = e*V_electrode 
     # Number of particles

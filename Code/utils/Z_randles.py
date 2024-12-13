@@ -4,23 +4,23 @@ import numpy as np
 # Randles components parameters 
 a_randles = {
     "R_el": 0.026455095283510706,  # Electrolyte resistance (Ohms)
-    "L": 5.534820787666664e-07, # Inductance (H)
+    "L": 5.534820787666664e-07,    # Inductance (H)
     
     #Cathode? 
-    "R_ct1": 0.0055426231465975665,  # Charge transfer resistance (Ohms)
+    "R_ct1": 0.0055426231465975665,  
     "Q1" : 0.6755099612832921, 
     "alpha1": 0.6624587164477784, 
-    "A1": 0.0010503007445281985,     # Warburg coefficient
+    "A1": 0.0010503007445281985,     
     "a_w1": 0.5722885441839765, 
 
     #Anode? 
-    "R_ct2": 0.005384825939881047,  # Charge transfer resistance (Ohms)
+    "R_ct2": 0.005384825939881047,  
     "Q2" : 2.339974970415867, 
     "alpha2": 0.8629910852751331, 
     }
 
 # Define non-ideal Warburg impedance
-def wni_imp(omega, A, a_w): # Non-Ideal 
+def wni_imp(omega, A, a_w): 
     return A/(1j*omega)**a_w
 
 # CPE for non-ideal behaviour
@@ -33,6 +33,10 @@ def i_imp(omega, L):
 
 # Function to calculate Z 
 def calc_randles_Z(comp, frequencies):
+    '''
+    Function to calculate the impedance Z from the ECM component parameters. 
+    
+    '''
     # Update a_randles dictionary from the flat parameter list (comp)
     elem_up = list_to_dict(a_randles, comp)
     ang_freq = 2 * np.pi * frequencies

@@ -30,7 +30,7 @@ def finding_params(parametre, calc_func, optimize_func):
     
     for d in dic_list:
         for key, value in d.items():
-            # If key is not in combined_dict, initialize with empty list
+            # If key is not in combined_dict, start with empty list
             if key not in combined_dict:
                 combined_dict[key] = []
             # Append the value to the list for this key
@@ -46,6 +46,8 @@ def first_plot_change_param(key_list, name, unit, parametre, calc_func, optimize
     Inputs: 
     key_list: the specific parameters in your parameter set you want to 
     observe change in. 
+    name: Name of the specifc parameter. 
+    unit: unit of the specific parameter. 
     parametre: the parameter set in your model you want to optimize.
     calc_func: the function that calculates impedance from a given parameter set. 
     optimize_func: the function that minimizes the sum of square error difference 
@@ -61,15 +63,13 @@ def first_plot_change_param(key_list, name, unit, parametre, calc_func, optimize
     if len(key_list) == 1: 
         ax.plot(x, combined_dict[key_list[0]], 
                 marker='o', linestyle='-', linewidth=1.5, markersize=6) 
-                #color=palette[i % len(palette)])
 
     elif len(key_list) >= 1: 
         for i, key in enumerate(key_list):
             ax.plot(x, combined_dict[key], label=key, 
-                    marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
+                    marker='o', linestyle='-', linewidth=1.5, markersize=6) 
         ax.legend(title="Parameters", fontsize=10, title_fontsize=11, loc='best')
     
-    #ax.grid(visible=True, linestyle='--', alpha=0.7)
     ax.set_xlabel("Number of Cycles")
     ax.set_title("Change in "+name)
     ax.set_ylabel(unit)
@@ -82,9 +82,7 @@ def plot_change_param(parametre, calc_func, optimize_func):
     Plots the change in fitted (specicic) parameters from dataset to dataset.  
 
     Inputs: 
-    key_list: the specific parameters in your parameter set you want to 
-    observe change in. 
-    parametre: the parameter set in your model you want to optimize.
+    parametre: input to find the combined dictionary. 
     calc_func: the function that calculates impedance from a given parameter set. 
     optimize_func: the function that minimizes the sum of square error difference 
     between the experimental and the model impedances. The function output is 
@@ -94,9 +92,6 @@ def plot_change_param(parametre, calc_func, optimize_func):
 
     combined_dict = finding_params(parametre, calc_func, optimize_func)
     x = [0, 50, 100, 150]
-
-    #sns.set(style="whitegrid")
-    #palette = sns.color_palette("tab10")
 
     fig = plt.figure(layout ='constrained', figsize = (12,12)) 
     gs = GridSpec(2,2,figure = fig)
@@ -129,17 +124,16 @@ def plot_change_param(parametre, calc_func, optimize_func):
 
     # Plotting 
     ax_Rel.plot(x, combined_dict['R_el'],
-                marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
+                marker='o', linestyle='-', linewidth=1.5, markersize=6) 
     ax_Rct.plot(x, combined_dict['R_ct1'], 
-                marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
+                marker='o', linestyle='-', linewidth=1.5, markersize=6) 
     ax_Rct.plot(x, combined_dict['R_ct2'], 
-                marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
+                marker='o', linestyle='-', linewidth=1.5, markersize=6) 
     ax_C.plot(x, combined_dict['Q1'], 
-                marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
+                marker='o', linestyle='-', linewidth=1.5, markersize=6) 
     ax_C.plot(x, combined_dict['Q2'], 
-                marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
+                marker='o', linestyle='-', linewidth=1.5, markersize=6) 
     ax_A.plot(x, combined_dict['A1'],
-                marker='o', linestyle='-', linewidth=1.5, markersize=6) #color=palette[i % len(palette)])
-
+                marker='o', linestyle='-', linewidth=1.5, markersize=6) 
 
     return plt.show()

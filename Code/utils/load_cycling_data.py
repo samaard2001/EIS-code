@@ -4,6 +4,11 @@ from scibatt.config import COLUMN_NAMES, CURRENT_ZERO_TOLERANCE
 
 def read_txt(filepath, raw = False):
     """
+    Reference 
+    ---
+    [1] Amund Raniseth. NTNU, Norway. 2024
+    ---
+
     Reads a maccor datafile and returns a dict of of dataframes;
     The key being the standard filename, and the dataframe being the data for each step in the programme
     """
@@ -105,6 +110,11 @@ def read_txt(filepath, raw = False):
 
 def read_csv(filepath, raw = False):
     """
+    Reference 
+    ---
+    [1] Amund Raniseth. NTNU, Norway. 2024
+    ---
+
     Reads a maccor datafile exported using the MaccorExport2.exe, selecting CSV export, and the following columns: 
     Cycle P,Cycle C,Step,Test Time,Step Time,Capacity (AHr),Energy (WHr),Current (A),Voltage (V),MD,ES,DPT Time
     
