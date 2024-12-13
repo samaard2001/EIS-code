@@ -47,6 +47,7 @@ def discharge_plotting_txt(parametre, path):
 
     '''
     model = pb.lithium_ion.DFN(options={"surface form": "differential"})
+
     # Define experiment
     experiment = pb.Experiment([
     ("Rest for 1 minutes"),
@@ -57,10 +58,13 @@ def discharge_plotting_txt(parametre, path):
     sim = pb.Simulation(model,  parameter_values=parametre, experiment=experiment) # , 
     safe_solver = pb.CasadiSolver(mode="fast", return_solution_if_failed_early=True)
     output = sim.solve(solver=safe_solver, calc_esoh=False)
-    output.plot()
+
+    # Choosing which parameters to plot, the default is all parameters. 
+    #output.plot()
+    output_var = ["Current [A]", "Voltage [V]"]
+    output.plot(output_variables = output_var)
 
     # Load the .txt file while skipping metadata rows
-    # Assuming the tabular data starts at line 7
     exp_bench = pd.read_csv(
         path,
         delimiter="\t",          # Tab-separated values
@@ -72,16 +76,11 @@ def discharge_plotting_txt(parametre, path):
         engine="python"          # Use Python engine for complex parsing
         )
     
-    # Ensure "Test Time" and "Current" is treated as strings
+    
     exp_bench["Test Time"] = exp_bench["Test Time"].astype(str)
-    #exp_bench["Current"] = pd.to_numeric(exp_bench["Current"], errors="coerce")
-
-    # Convert "Test Time" to seconds if needed and adjust time
     exp_bench["Test Time"] = pd.to_timedelta(exp_bench["Test Time"].str.strip(), errors='coerce').dt.total_seconds()
-
-    # Filter data
-    exp_bench = exp_bench[exp_bench["Test Time"] < 11.8 * 3600]  # Time < 12 hours
-    exp_bench = exp_bench[exp_bench["Test Time"] > 6.6 * 3600]   # Time > 2 hours
+    exp_bench = exp_bench[exp_bench["Test Time"] < 11.8 * 3600]  # Time < 11.8 hours
+    exp_bench = exp_bench[exp_bench["Test Time"] > 6.6 * 3600]   # Time > 6.6 hours
     exp_bench["Test Time"] = exp_bench["Test Time"] - exp_bench["Test Time"].iloc[0]
 
     # Plotting
