@@ -1,8 +1,14 @@
 import pybamm as pb 
 import pandas as pd 
+import numpy as np
 import matplotlib.pyplot as plt 
 
-def discharge_plotting(parametre, path): 
+def discharge_plotting_csv(parametre, path): 
+
+    '''
+    [1] Amund Midtgard Raniseth, NTNU Trondheim. 2024. 
+
+    '''
     model = pb.lithium_ion.DFN(options={"surface form": "differential"})
     # Define experiment
     experiment = pb.Experiment([
@@ -16,9 +22,9 @@ def discharge_plotting(parametre, path):
     output = sim.solve(solver=safe_solver, calc_esoh=False)
     output.plot()
 
+
     # Load experimental data & select relevant discharge
     exp_bench = pd.read_csv(path)
-    #exp_bench = pd.read_csv("MJ1_01_01.csv")
     exp_bench["t"] = exp_bench["t"] - exp_bench["t"].iloc[0]
     exp_bench = exp_bench[exp_bench["t"] < 12*3600]
     exp_bench = exp_bench[exp_bench["t"] > 2*3600]
@@ -32,3 +38,59 @@ def discharge_plotting(parametre, path):
     plt.ylabel("Voltage, V")
     plt.legend()
     return plt.show()
+
+
+def discharge_plotting_txt(parametre, path): 
+
+    '''
+    [1] Amund Midtgard Raniseth, NTNU Trondheim. 2024. 
+
+    '''
+    model = pb.lithium_ion.DFN(options={"surface form": "differential"})
+    # Define experiment
+    experiment = pb.Experiment([
+    ("Rest for 1 minutes"),
+    ("Discharge at C/5 for 12 hours or until 3.0 V"),
+    ])   
+
+    # Simulate the experiment using the model with the updated parameter set
+    sim = pb.Simulation(model,  parameter_values=parametre, experiment=experiment) # , 
+    safe_solver = pb.CasadiSolver(mode="fast", return_solution_if_failed_early=True)
+    output = sim.solve(solver=safe_solver, calc_esoh=False)
+    output.plot()
+
+    # Load the .txt file while skipping metadata rows
+    # Assuming the tabular data starts at line 7
+    exp_bench = pd.read_csv(
+        path,
+        delimiter="\t",          # Tab-separated values
+        skiprows=7,              # Skip the first 7 rows of metadata
+        names=["Rec", "Cycle P", "Cycle C", "Step", "Test Time", "Step Time", 
+               "Capacity", "Energy", "Current", "Voltage", "MD", "ES", "DPT", "Time"
+               ],                        # Explicitly name the columns
+        usecols=["Test Time", "Current", "Voltage"],  # Extract only necessary columns
+        engine="python"          # Use Python engine for complex parsing
+        )
+    
+    # Ensure "Test Time" and "Current" is treated as strings
+    exp_bench["Test Time"] = exp_bench["Test Time"].astype(str)
+    #exp_bench["Current"] = pd.to_numeric(exp_bench["Current"], errors="coerce")
+
+    # Convert "Test Time" to seconds if needed and adjust time
+    exp_bench["Test Time"] = pd.to_timedelta(exp_bench["Test Time"].str.strip(), errors='coerce').dt.total_seconds()
+
+    # Filter data
+    exp_bench = exp_bench[exp_bench["Test Time"] < 11.8 * 3600]  # Time < 12 hours
+    exp_bench = exp_bench[exp_bench["Test Time"] > 6.6 * 3600]   # Time > 2 hours
+    exp_bench["Test Time"] = exp_bench["Test Time"] - exp_bench["Test Time"].iloc[0]
+
+    # Plotting
+    plt.plot(exp_bench["Test Time"] / 3600, exp_bench["Voltage"], label="Experiment")
+    plt.plot(sim.solution['Time [s]'].entries/3600, sim.solution['Voltage [V]'].entries, label="Simulation")
+    plt.xlabel("Time (hours)")
+    plt.ylabel("Voltage (V)")
+    plt.legend()
+    plt.title("Voltage vs Time")
+    return plt.show()
+
+

@@ -3,7 +3,7 @@ from scipy.optimize import minimize
 from utils.convertion import dict_to_list, list_to_dict 
 from utils.optimize import optimize_diff 
 from utils.load_data import get_exp_data 
-from Code.utils.Z_randles import calc_randles_Z, a_randles 
+from utils.Z_randles import calc_randles_Z, a_randles 
 
 # Optimizing the difference function for a given data set
 def optimize_randles(i, parametre, calc_func):
