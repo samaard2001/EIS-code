@@ -191,6 +191,15 @@ experimental_params = {
     'Positive electrode Bruggeman coefficient (electrolyte)': 2.1,  }
 
 def params_func(): 
+   '''
+   References    
+   ----------     
+   .. [1] Chang-Hui Chen, Ferran Brosa Planella, Kieran O’Regan, Dominika Gastol, W.    
+   Dhammika Widanage, and Emma Kendrick. "Development of Experimental Techniques for    
+   Parameterization of Multi-scale Lithium-ion Battery Models." Journal of the     
+   Electrochemical Society 167 (2020): 080534.  
+   ----------
+   '''
    # Use default parameters from the Chen2020 publication
    params = pb.ParameterValues("Chen2020")
 
