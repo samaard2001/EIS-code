@@ -5,7 +5,7 @@ from utils.load_data import get_exp_data
 
 def calc_pybamm_Z(i, parametre, Rs): 
     '''
-    Function to calculate the impedance Z from the PyBaMM parameters. 
+    Function to calculate the impedance Z from the chosen parameters. 
     Inputs: 
     i: data set number
     parametre: parameter list
@@ -27,7 +27,7 @@ def calc_pybamm_Z(i, parametre, Rs):
     # Solving the simulation with the freequency rangge and the 
     # numeric method called 'prebicgstab'. 
     sim_f_func = eis_sim_func.solve(freq, method = "prebicgstab")
-    
+
     # Returing the real impedance with an additional ohmic resistance, 
     # and an imaginary resistance. 
     return (sim_f_func.real + Rs) + sim_f_func.imag*1j
