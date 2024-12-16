@@ -100,7 +100,7 @@ def plot_change_param(parametre, calc_func, optimize_func):
     ax_Rel = fig.add_subplot(gs[0,0])
     ax_Rel.set_ylabel(r"[$\Omega$]")
     ax_Rel.set_xlabel('Number of Cycles')
-    ax_Rel.set_title("Change in Solution Resistance")
+    ax_Rel.set_title("Change in Ohmic Resistance")
 
     # Charge Transfer Resistance
     ax_Rct = fig.add_subplot(gs[0,1])
